@@ -8,25 +8,4 @@ DFK camera RTC
 DFKカメラの撮影
 
 
-## Input and Output
-### shootCmd(RTC::TimedBoolean)
 
-
-Trueで撮影
-
-### image(RTC::CameraImage)
-
-
-画像の送信
-
-
-
-
-## For use 
-**pip install opencv-python**
-
-
-**pip install numpy**
-
-
-**python usbCameraRTC_top_dfk.py**
