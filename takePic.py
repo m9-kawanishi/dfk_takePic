@@ -17,25 +17,30 @@ from easyCap import *
 #Create the camera object
 Camera = tis.TIS_CAM()
 
-#Show dialog
-Camera.ShowDeviceSelectionDialog()
+#Set Property
+Camera.openVideoCaptureDevice("DFK 38UX304")
 
 #デバイスが見つからなかったら処理を終える
 if Camera.IsDevValid() != 1:
-    print( "No device selected")
-    exit()
+    try:
+        print("no detect device")
+        Camera.ShowDeviceSelectionDialog()
+    except:
+        print( "No device selected")
+        exit()
 
 
 # 変数設定
-FOLDER_NAME = "./a/" # 保存先ディレクトリ
-FILE_NAME = "0105_" # ファイル名（共通）
-EXTENSION = ".bmp"
-SLEEP_SEC = 2 # 撮影間隔[sec]
+FOLDER_NAME = "./top_test_0407あ/" # 保存先ディレクトリ
+FILE_NAME = "top_test_" # ファイル名（共通）
+EXTENSION = ".jpg"
+SLEEP_SEC = 0.9 # 撮影間隔[sec]
 SHOW_WIN_SCALE = 0.25 # 表示ウィンドウの倍率
 
 counter = 0 # ファイル名（番号）
 
 # 初期設定画面
+print(f"you'll takePic {FOLDER_NAME}{FILE_NAME}")
 counter = int(input("Please input first file no: "))
 cmd = input("Are you sure start process? (y/n): ")
 print("\n")
@@ -84,7 +89,7 @@ while cmd == "y":
         cmd = "n"
 
 # メモリ解放
-ic.IC_ReleaseGrabber(hGrabber)
+# ic.IC_ReleaseGrabber(hGrabber)
 cv2.destroyAllWindows()
 
 print("Finish process")
